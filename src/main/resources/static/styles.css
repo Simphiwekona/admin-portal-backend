@@ -1,0 +1,41 @@
+.header1{
+    text-align: right;
+}
+
+.sub_header1{
+    text-align: right;
+}
+/* Apply some basic styling to the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Divide the table into two columns */
+.table-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Style the sub-columns inside each main column */
+.column {
+    flex: 1;
+    margin: 0 5px;
+}
+.footer_text{
+    text-align: center;
+}
+.footer_header {
+    text-align: center;
+}

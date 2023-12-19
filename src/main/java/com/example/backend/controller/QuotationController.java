@@ -5,12 +5,13 @@ import com.example.backend.entity.Quotation;
 import com.example.backend.service.QuotationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/quotations")
 @CrossOrigin("http://localhost:3000")
 public class QuotationController {
@@ -36,10 +37,4 @@ public class QuotationController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/{quoteId}")
-    public String generateUserHtml(@PathVariable Long quoteId, Model model) {
-        Quotation quote = quotationService.getQuoteById(quoteId);
-        model.addAttribute("quote", quote);
-        return "quote-template";
-    }
 }

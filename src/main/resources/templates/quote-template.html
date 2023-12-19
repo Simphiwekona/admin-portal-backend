@@ -3,15 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <title>Quote Template</title>
+    <link rel="stylesheet" href="/styles.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-<h1>Quote Details</h1>
-<p>Customer Name: <span th:text="${quote.customerName}"></span></p>
-<p>Contact Number: <span th:text="${quote.contactNumber}"></span></p>
-<p>Email: <span th:text="${quote.email}"></span></p>
-<p>Description: <span th:text="${quote.description}"></span></p>
-<p>Quote Number: <span th:text="${quote.quotationNumber}"></span></p>
-<p>Quote Date: <span th:text="${quote.quoteDate}"></span></p>
-<!-- Add more fields as needed -->
+<div class="container">
+    <div class="heading">
+        <h2 class="header1">Quotation</h2>
+        <hr>
+    </div>
+    <section>
+        <div class="sub_header1" th:if="${quote != null}">
+            <h3>Quote Details</h3>
+            <h5>Customer Number: <span></span></h5>
+            <h5>Client Name: <span th:text="${quote.customer_name}"></span></h5>
+            <h5>Quote Number: QU<span th:text="${quote.quotationNumber}"></span></h5>
+            <h5>Quote Date: <span th:text="${quote.quote_date}"></span></h5>
+        </div>
+        <div th:unless="${quote !=null}">
+            <p>Quote not Found</p>
+        </div>
+
+        <div class="sub_header2">
+            <h5>Linked Digital Computers</h5>
+            <h5>42 Theuns Street, Kempton Park</h5>
+            <h5>Johannesburg, 1818</h5>
+            <h5>South Africa</h5>
+        </div>
+        <hr>
+    </section>
+    <section>
+        <div class="sub_header3">
+            <h5>We are please to provide the following quote.</h5>
+            <h3>Quote Details:</h3>
+        </div>
+        <div class="quote_details mt-4">
+            <div class="table-container" th:if="${quote != null}">
+                <!-- First column -->
+                <div class="column">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Attention:</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Client:</td>
+                            <td th:text="${quote.customer_name}"></td>
+                        </tr>
+                        <tr>
+                            <td>Contact:</td>
+                            <td th:text="${quote.contact_number}"></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td th:text="${quote.email}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Second column -->
+                <div class="column">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>From:</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Department</td>
+                            <td>Linked Digital</td>
+                        </tr>
+                        <tr>
+                            <td>Tel No:</td>
+                            <td>+27 69 300 1958</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td>linkeddigitalcomputers@gmail.com</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="table_container1">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Qty</th>
+                        <th>Description</th>
+                        <th>Unit Price</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>####</td>
+                        <td>####</td>
+                        <td>####</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <hr>
+        </div>
+    </section>
+    <section>
+        <div class="header3">
+            <h3>Terms and Condition</h3>
+        </div>
+        <div class="subsection_body">
+            <ol>
+                <li>
+                    <p>PLEASE NOTE – HDD replacement, OS Reloads and replacement of mainboards with embedded
+                        storage will lead to complete data loss of documents, email, etc.</p>
+                </li>
+                <li>
+                    <p> Linked (Pty)Ltd, will not be liable for any data loss or re-installation of third-party
+                        software. -
+                        Quotes are valid for 30 days</p>
+                </li>
+                <li>
+                    <p>Repairs will only commence once the signed quotation accepting the terms and conditions
+                        listed
+                        and proof of payment has been received</p>
+                </li>
+                <li>
+                    <p> Quote is based on the initial assessment of the unit, and is subject to change.</p>
+                </li>
+                <li>
+                    <p> Units not collected within 30 Days after rejection will be sold off to defray storage costs.
+                    </p>
+                </li>
+                <li>
+                    <p> Quotations not answered within 30 days will be automatically considered rejected</p>
+                </li>
+                <li>
+                    <p>Any rejected quotes about out-of-warranty status will default to an assessment fee (R 200.00
+                        ex
+                        VAT) and, should you require shipment of the unit a shipping fee (R 300.00).</p>
+                </li>
+                <li>
+                    <p> The customer must pay these charges before the notebook gets despatched/released.</p>
+                </li>
+                <li>
+                    <p> Repair Time is subject to the availability of spares, errors, and omissions, if we cannot
+                        source the
+                        part we will automatically reject the quote, refund the money paid, and make the unit ready
+                        for
+                        collection/shipment to you.
+                    </p>
+                </li>
+                <li>
+                    <p> Quoted prices are based on Linked (Pty) Ltd retaining the defective parts.</p>
+                </li>
+                <li>
+                    <p> All spares fitted carry a 3-month warranty as stipulated in all the Terms and Conditions of
+                        warranty
+                        books supplied with hardware Regards.</p>
+                </li>
+            </ol>
+        </div>
+        <hr class="mt-5 mb-3">
+    </section>
+    <section>
+        <div class="footer_section">
+            <h2 class="mb-5">Banking Details:</h2>
+            <div class="banking1 mb-4">
+                <h4>Capitec Bank</h4>
+                <h5>Bank Name: <span>Capitec Bank</span></h5>
+                <h5>Branch Code: <span>470 010</span></h5>
+                <h5>Account: <span>1570509881</span></h5>
+            </div>
+            <div class="banking2">
+                <h4>Standard Bank</h4>
+                <h5>Bank Name: <span>Standard Bank</span></h5>
+                <h5>Account: <span>038292211</span></h5>
+                <h5>Branch: <span></span></h5>
+            </div>
+        </div>
+        <hr>
+    </section>
+    <section>
+        <div class="footer">
+            <p class="footer_text">We hope you find this quote satisfactory and we look forward to hearing from you.</p>
+            <h2 class="footer_header">Thank You</h2>
+        </div>
+    </section>
+
+</div>
 </body>
 </html>
