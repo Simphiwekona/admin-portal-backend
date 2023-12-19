@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -21,10 +22,13 @@ public class QuotationServiceImpl implements QuotationService {
     @Autowired
     private ModelMapper modelMapper;
 
+
+
     @Override
     public QuotationDto createQuotation(QuotationDto quotationDTO) {
         Quotation quotation = modelMapper.map(quotationDTO, Quotation.class);
         quotation.setQuotationNumber(generateQuotationNumber());
+        quotation.setQuote_date(LocalDate.now());
         quotation = quotationRepo.save(quotation);
         return modelMapper.map(quotation, QuotationDto.class);
     }
@@ -40,6 +44,12 @@ public class QuotationServiceImpl implements QuotationService {
     @Override
     public void deleteQuotation(Long quoteId) {
         quotationRepo.deleteById(quoteId);
+    }
+
+    @Override
+    public Quotation getQuoteById(Long quoteId) {
+        return quotationRepo.findById(quoteId)
+                .orElse(null);
     }
 
     private String generateQuotationNumber() {

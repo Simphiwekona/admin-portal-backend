@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quote Template</title>
+</head>
+<body>
+<h1>Quote Details</h1>
+<p>Customer Name: <span th:text="${quote.customerName}"></span></p>
+<p>Contact Number: <span th:text="${quote.contactNumber}"></span></p>
+<p>Email: <span th:text="${quote.email}"></span></p>
+<p>Description: <span th:text="${quote.description}"></span></p>
+<p>Quote Number: <span th:text="${quote.quotationNumber}"></span></p>
+<p>Quote Date: <span th:text="${quote.quoteDate}"></span></p>
+<!-- Add more fields as needed -->
+</body>
+</html>

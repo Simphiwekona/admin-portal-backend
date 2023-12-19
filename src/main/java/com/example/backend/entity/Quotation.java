@@ -3,8 +3,10 @@ package com.example.backend.entity;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -18,25 +20,38 @@ public class Quotation {
     private Long quoteId;
 
     @NotNull
-    @Column(name = "product_name")
-    private String product_name;
+    @Column(name = "customer_name")
+    private String customer_name;
 
     @NotNull
-    @Column(name = "product_model")
-    private String product_model;
+    @Column(name = "contact_number")
+    private String contact_number;
 
     @NotNull
-    @Column(name = "company_name")
-    private String company_name;
+    @Column(name = "email")
+    private String email;
+
+    @NotNull
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "quotation_number", unique = true)
     private String quotationNumber;
 
-    public String Quotation(){
-        return quotationNumber;
+    @Column(name = "quote_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate quote_date;
+
+    public  Quotation(){
+        this.quotationNumber = generateQuotationNumber();
+        this.quote_date = LocalDate.now();
     }
     public String getQuotationNumber(){
         return quotationNumber;
+    }
+
+    public LocalDate getQuoteDate(){
+        return quote_date;
     }
 
     private String generateQuotationNumber(){
