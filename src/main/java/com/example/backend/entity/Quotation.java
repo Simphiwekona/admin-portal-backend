@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -41,6 +42,9 @@ public class Quotation {
     @Column(name = "quote_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate quote_date;
+
+    @OneToMany(mappedBy = "quotation", cascade = CascadeType.ALL)
+    private List<Item> items;
 
     public  Quotation(){
         this.quotationNumber = generateQuotationNumber();

@@ -35,6 +35,9 @@ public class TemplateController {
     public ResponseEntity<byte[]> generatePdf(@PathVariable Long quoteId, Model model) throws Exception {
         Quotation quote = quotationService.getQuoteById(quoteId);
 
+        String customerName = quote.getCustomer_name();
+        String quotationNumber = quote.getQuotationNumber();
+
         // Create Thymeleaf context and set model attributes
         Context thymeleafContext = new Context();
         thymeleafContext.setVariable("quote", quote);
@@ -50,9 +53,10 @@ public class TemplateController {
         renderer.createPDF(pdfOutputStream);
 
         // Set response headers
+        String filename = String.format("%s_%s.pdf", customerName, quotationNumber);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDispositionFormData("attachment", "quote.pdf");
+        headers.setContentDispositionFormData("attachment", filename);
 
         return new ResponseEntity<>(pdfOutputStream.toByteArray(), headers, HttpStatus.OK);
     }
